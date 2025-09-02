@@ -1,57 +1,89 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, Text, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from .database import Base
-import datetime
+from sqlalchemy.sql import func
+from database import Base
 
 class User(Base):
     __tablename__ = "users"
     
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True)
-    username = Column(String, unique=True, index=True)
-    full_name = Column(String)
     hashed_password = Column(String)
+    full_name = Column(String)
     is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
     
-    news_items = relationship("NewsItem", back_populates="author")
-    heritage_projects = relationship("HeritageProject", back_populates="creator")
+    articles = relationship("Article", back_populates="author")
 
-class NewsItem(Base):
-    __tablename__ = "news_items"
+class Category(Base):
+    __tablename__ = "categories"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    description = Column(String)
+    
+    articles = relationship("Article", back_populates="category")
+
+class Article(Base):
+    __tablename__ = "articles"
     
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     content = Column(Text)
-    category = Column(String)  # palestinian_reality, heritage, etc.
-    region = Column(String)  # west_bank, gaza, etc.
+    summary = Column(String)
+    image_url = Column(String)
     author_id = Column(Integer, ForeignKey("users.id"))
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
-    image_url = Column(String, nullable=True)
+    category_id = Column(Integer, ForeignKey("categories.id"))
+    is_breaking = Column(Boolean, default=False)
+    is_verified = Column(Boolean, default=False)
+    views_count = Column(Integer, default=0)
+    likes_count = Column(Integer, default=0)
+    shares_count = Column(Integer, default=0)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
-    author = relationship("User", back_populates="news_items")
+    author = relationship("User", back_populates="articles")
+    category = relationship("Category", back_populates="articles")
+    tags = relationship("Tag", secondary="article_tags")
 
-class HeritageProject(Base):
-    __tablename__ = "heritage_projects"
+class Tag(Base):
+    __tablename__ = "tags"
     
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
+    name = Column(String, index=True)
+    
+    articles = relationship("Article", secondary="article_tags")
+
+class ArticleTag(Base):
+    __tablename__ = "article_tags"
+    
+    article_id = Column(Integer, ForeignKey("articles.id"), primary_key=True)
+    tag_id = Column(Integer, ForeignKey("tags.id"), primary_key=True)
+
+class HeritageSite(Base):
+    __tablename__ = "heritage_sites"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
     description = Column(Text)
-    location = Column(String)  # nablus, jerusalem, etc.
-    creator_id = Column(Integer, ForeignKey("users.id"))
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    image_url = Column(String, nullable=True)
-    vr_enabled = Column(Boolean, default=False)
-    ar_enabled = Column(Boolean, default=False)
-    
-    creator = relationship("User", back_populates="heritage_projects")
+    location = Column(String)
+    historical_period = Column(String)
+    image_url = Column(String)
+    vr_tour_url = Column(String)
+    latitude = Column(String)
+    longitude = Column(String)
+    importance_level = Column(Integer)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
-class AIChat(Base):
-    __tablename__ = "ai_chats"
+class AIAnalysis(Base):
+    __tablename__ = "ai_analyses"
     
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"))
-    message = Column(Text)
-    response = Column(Text)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    article_id = Column(Integer, ForeignKey("articles.id"))
+    analysis_type = Column(String)  # political, social, cultural, economic, occupation
+    summary = Column(Text)
+    key_points = Column(Text)
+    sentiment_score = Column(Integer)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    
+    article = relationship("Article")

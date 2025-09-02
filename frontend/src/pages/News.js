@@ -2,11 +2,9 @@ import React from "react";
 
 const News = () => {
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold text-gray-800 amiri-font mb-6">
-        الأخبار
-      </h1>
-      <p className="text-gray-600">صفحة الأخبار قيد التطوير...</p>
+    <div className="container mx-auto px-6 py-8">
+      <h1 className="text-4xl font-bold text-center mb-8">الأخبار</h1>
+      {/* سيتم إضافة محتوى الأخبار هنا */}
     </div>
   );
 };

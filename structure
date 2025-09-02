@@ -1,123 +1,38 @@
-asadah-backend/
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── models.py
-│   ├── schemas.py
-│   ├── database.py
-│   └── routes/
-│       ├── auth.py
-│       ├── news.py
-│       ├── heritage.py
-│       └── ai_assistant.py
-├── requirements.txt
-└── Dockerfile
-
-frontend/
-├─ public/
-│   ├─ index.html
-│   └─ ...
-├─ src/
-│   ├─ index.js
-│   ├─ index.css          # CSS عام
-│   ├─ App.jsx
-│   ├─ App.css
-│   ├─ components/
-│   │   ├─ Header.jsx
-│   │   ├─ Header.css
-│   │   ├─ Sidebar.jsx
-│   │   ├─ Sidebar.css
-│   │   ├─ PalestinianReality.jsx
-│   │   ├─ PalestinianReality.css
-│   │   ├─ ARViewer.jsx
-│   │   ├─ ARViewer.css
-│   │   └─ Dashboard.jsx
-│   │   └─ Dashboard.css
-│   └─ assets/
-│       └─ images/
-└─ package.json
-
-src/
-│
-├─ components/
-│   ├─ Header.jsx
-│   ├─ Sidebar.jsx
-│   └─ ARViewer.jsx
-│
-├─ pages/
-│   ├─ Home.jsx
-│   ├─ PalestinianReality.jsx
-│   ├─ HeritageProjects.jsx
-│   ├─ VRRoom.jsx
-│   ├─ AIHelper.jsx
-│   ├─ News.jsx
-│   ├─ PressServices.jsx
-│   ├─ StaffManagement.jsx
-│   ├─ Finance.jsx
-│   ├─ MediaLibrary.jsx
-│   ├─ Training.jsx
-│   ├─ Institutions.jsx
-│   └─ Settings.jsx
-│
-├─ css/
-│   ├─ header.css
-│   ├─ sidebar.css
-│   ├─ pages.css
-│   └─ carousel.css
-│
-├─ App.jsx
-└─ index.js
-
-frontend/
-└─ src/
-   ├─ index.js
-   ├─ index.css
-   ├─ App.jsx
-   ├─ css/
-   │  ├─ globals.css
-   │  ├─ layout.css
-   │  ├─ header.css
-   │  ├─ sidebar.css
-   │  ├─ pages.css
-   │  └─ carousel.css
-   ├─ components/
-   │  ├─ Header.jsx
-   │  ├─ Sidebar.jsx
-   │  ├─ Carousel.jsx
-   │  └─ ARViewer.jsx
-   └─ pages/
-      ├─ Home.jsx
-      ├─ PalestinianReality.jsx
-      ├─ HeritageProjects.jsx
-      ├─ VRRoom.jsx
-      ├─ AIHelper.jsx
-      ├─ News.jsx
-      ├─ PressServices.jsx
-      ├─ StaffManagement.jsx
-      ├─ Finance.jsx
-      ├─ MediaLibrary.jsx
-      ├─ Training.jsx
-      ├─ Institutions.jsx
-      └─ Settings.jsx
-
-
-asadah-frontend/
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/
-│   │   ├── Header.js
-│   │   ├── Sidebar.js
-│   │   ├── PalestinianReality.js
-│   │   ├── NewsSection.js
-│   │   ├── ServicesSection.js
-│   │   ├── HeritageProjects.js
-│   │   ├── InteractiveMap.js
-│   │   └── ChatBot.js
-│   ├── pages/
-│   │   └── Dashboard.js
-│   ├── App.js
-│   ├── App.css
-│   └── index.js
-├── package.json
-└── Dockerfile
+media-platform/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   ├── schemas.py
+│   │   ├── crud.py
+│   │   ├── database.py
+│   │   └── ai_analysis.py
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── docker-compose.yml
+├── frontend/
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Header.js
+│   │   │   ├── NewsTicker.js
+│   │   │   ├── AnalysisDashboard.js
+│   │   │   ├── NewsSection.js
+│   │   │   ├── VRStudio.js
+│   │   │   └── Sidebar.js
+│   │   ├── pages/
+│   │   │   ├── Home.js
+│   │   │   ├── News.js
+│   │   │   └── Heritage.js
+│   │   ├── styles/
+│   │   │   └── App.css
+│   │   ├── App.js
+│   │   ├── App.test.js
+│   │   └── index.js
+│   ├── package.json
+│   └── Dockerfile
+├── nginx/
+│   └── nginx.conf
+└── docker-compose.yml

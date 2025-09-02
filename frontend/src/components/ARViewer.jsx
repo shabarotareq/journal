@@ -1,9 +1,14 @@
+/**
+ * ARViewer
+ * - Displays a 3D model via <model-viewer> when a GLB/GLTF url is provided.
+ * - Otherwise shows a fallback image or message.
+ */
 import React from "react";
 
 export default function ARViewer({ modelUrl, poster }) {
   if (!modelUrl) {
     return (
-      <div className="card modelWrap">
+      <div className="card">
         <p>لا يوجد نموذج ثلاثي الأبعاد لهذا الموقع بعد.</p>
       </div>
     );

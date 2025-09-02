@@ -1,0 +1,38 @@
+
+services:
+  db:
+    image: postgres:15
+    container_name: rebuilt_voices_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rebuilt_voices
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: rebuilt_voices_backend
+    env_file: ./backend/.env
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/uploads:/app/uploads
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: rebuilt_voices_frontend
+    environment:
+      - VITE_API_BASE=http://localhost:8000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

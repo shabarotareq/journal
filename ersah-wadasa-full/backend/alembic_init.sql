@@ -1,0 +1,1 @@
+-- Simple SQL to create tables if needed (demo only)

@@ -1,79 +1,78 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional, List
+from typing import List, Optional
 
-class UserBase(BaseModel):
-    email: str
-    username: str
-    full_name: str
-
-class UserCreate(UserBase):
-    password: str
-
-class User(UserBase):
-    id: int
-    is_active: bool
-    created_at: datetime
-    
-    class Config:
-        orm_mode = True
-
-class NewsItemBase(BaseModel):
+class ArticleBase(BaseModel):
     title: str
     content: str
-    category: str
-    region: str
+    summary: Optional[str] = None
+    image_url: Optional[str] = None
+    category_id: int
+    is_breaking: bool = False
+    is_verified: bool = False
 
-class NewsItemCreate(NewsItemBase):
+class ArticleCreate(ArticleBase):
     pass
 
-class NewsItem(NewsItemBase):
+class Article(ArticleBase):
     id: int
     author_id: int
+    views_count: int
+    likes_count: int
+    shares_count: int
     created_at: datetime
-    updated_at: datetime
-    image_url: Optional[str] = None
+    updated_at: Optional[datetime] = None
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
-class HeritageProjectBase(BaseModel):
-    title: str
+class CategoryBase(BaseModel):
+    name: str
+    description: Optional[str] = None
+
+class CategoryCreate(CategoryBase):
+    pass
+
+class Category(CategoryBase):
+    id: int
+    
+    class Config:
+        from_attributes = True
+
+class HeritageSiteBase(BaseModel):
+    name: str
     description: str
     location: str
-
-class HeritageProjectCreate(HeritageProjectBase):
-    pass
-
-class HeritageProject(HeritageProjectBase):
-    id: int
-    creator_id: int
-    created_at: datetime
+    historical_period: str
     image_url: Optional[str] = None
-    vr_enabled: bool
-    ar_enabled: bool
-    
-    class Config:
-        orm_mode = True
+    vr_tour_url: Optional[str] = None
+    latitude: Optional[str] = None
+    longitude: Optional[str] = None
+    importance_level: int = 1
 
-class AIChatBase(BaseModel):
-    message: str
-
-class AIChatCreate(AIChatBase):
+class HeritageSiteCreate(HeritageSiteBase):
     pass
 
-class AIChat(AIChatBase):
+class HeritageSite(HeritageSiteBase):
     id: int
-    user_id: int
-    response: str
     created_at: datetime
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str
+class AIAnalysisBase(BaseModel):
+    article_id: int
+    analysis_type: str
+    summary: str
+    key_points: str
+    sentiment_score: int
 
-class TokenData(BaseModel):
-    username: Optional[str] = None
+class AIAnalysisCreate(AIAnalysisBase):
+    pass
+
+class AIAnalysis(AIAnalysisBase):
+    id: int
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True

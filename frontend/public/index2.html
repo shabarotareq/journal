@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إعلامي بالذكاء الاصطناعي - منصة إخبارية متطورة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              arabic: ["Noto Sans Arabic", "Arial", "sans-serif"],
+              news: ["Georgia", "Times New Roman", "serif"],
+            },
+            colors: {
+              news: {
+                primary: "#1a365d",
+                secondary: "#2d3748",
+                accent: "#3182ce",
+                red: "#e53e3e",
+                blue: "#3182ce",
+                green: "#38a169",
+                gray: "#4a5568",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans Arabic", Arial, sans-serif;
+      }
+      .news-gradient {
+        background: linear-gradient(
+          135deg,
+          #1a365d 0%,
+          #2d3748 50%,
+          #4a5568 100%
+        );
+      }
+      .breaking-news {
+        background: linear-gradient(90deg, #dc2626 0%, #b91c1c 100%);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+      .pulse-live {
+        animation: pulse-live 2s infinite;
+      }
+      @keyframes pulse-live {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.05);
+        }
+      }
+      .ticker-scroll {
+        animation: ticker 30s linear infinite;
+      }
+      @keyframes ticker {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      .ai-glow {
+        box-shadow: 0 0 20px rgba(49, 130, 206, 0.3);
+        animation: ai-pulse 3s ease-in-out infinite;
+      }
+      @keyframes ai-pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(49, 130, 206, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(49, 130, 206, 0.6);
+        }
+      }
+      .vr-effect {
+        background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      .vr-effect::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: vr-scan 4s linear infinite;
+      }
+      @keyframes vr-scan {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Main Header -->
+    <header class="news-gradient text-white shadow-2xl">
+      <div class="container mx-auto px-6">
+        <!-- Top Navigation -->
+        <div
+          class="flex items-center justify-between py-3 border-b border-white border-opacity-20"
+        >
+          <div class="flex items-center space-x-6 space-x-reverse text-sm">
+            <span>الأحد 15 ديسمبر 2024</span>
+            <span>|</span>
+            <span>نابلس، فلسطين</span>
+            <span>|</span>
+            <span class="flex items-center">
+              <span
+                class="w-2 h-2 bg-green-400 rounded-full ml-2 pulse-live"
+              ></span>
+              بث مباشر
+            </span>
+          </div>
+          <div class="flex items-center space-x-4 space-x-reverse">
+            <button class="hover:text-aljazeera-light transition-colors">
+              🔍
+            </button>
+            <button class="hover:text-aljazeera-light transition-colors">
+              🌐
+            </button>
+            <button class="hover:text-aljazeera-light transition-colors">
+              📱
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="flex items-center justify-between py-4">
+          <div class="flex items-center space-x-4 space-x-reverse">
+            <div
+              class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-lg"
+            >
+              <span class="text-3xl">🏛️</span>
+            </div>
+            <div>
+              <h1 class="text-3xl font-bold">إعلامي بالذكاء الاصطناعي</h1>
+              <p class="text-gray-200">
+                منصة إخبارية متطورة بتقنيات الذكاء الاصطناعي
+              </p>
+            </div>
+          </div>
+
+          <!-- AI Status Indicator -->
+          <div
+            class="hidden md:flex items-center space-x-3 space-x-reverse ai-glow bg-white bg-opacity-10 rounded-lg px-4 py-2"
+          >
+            <div class="w-3 h-3 bg-green-400 rounded-full pulse-live"></div>
+            <span class="text-sm">الذكاء الاصطناعي نشط</span>
+            <span class="text-xs opacity-75">تحليل مستمر للأخبار</span>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="pb-4">
+          <div class="flex items-center justify-between">
+            <div class="flex space-x-8 space-x-reverse">
+              <a
+                href="#breaking"
+                class="hover:text-gray-200 transition-colors font-bold border-b-2 border-white pb-1"
+                >عاجل</a
+              >
+              <a href="#palestine" class="hover:text-gray-200 transition-colors"
+                >فلسطين</a
+              >
+              <a href="#nablus" class="hover:text-gray-200 transition-colors"
+                >نابلس</a
+              >
+              <a
+                href="#ai-analysis"
+                class="hover:text-gray-200 transition-colors"
+                >تحليل ذكي</a
+              >
+              <a href="#heritage" class="hover:text-gray-200 transition-colors"
+                >تراث</a
+              >
+              <a href="#vr-studio" class="hover:text-gray-200 transition-colors"
+                >استوديو VR</a
+              >
+              <a href="#live-map" class="hover:text-gray-200 transition-colors"
+                >خريطة حية</a
+              >
+            </div>
+            <button id="menuBtn" class="md:hidden text-white">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Breaking News Bar -->
+    <div class="breaking-news text-white py-2 overflow-hidden">
+      <div class="flex items-center">
+        <div
+          class="bg-white text-red-600 px-3 py-1 font-bold text-sm ml-4 pulse-live"
+        >
+          عاجل
+        </div>
+        <div class="ticker-scroll whitespace-nowrap">
+          <span class="mx-8"
+            >🔴 اكتشاف أثري مهم في البلدة القديمة بنابلس يكشف عن حضارة عمرها
+            2000 عام</span
+          >
+          <span class="mx-8"
+            >📍 مهرجان نابلس للتراث يستقطب 50 ألف زائر من جميع أنحاء
+            فلسطين</span
+          >
+          <span class="mx-8"
+            >🏛️ ترميم المسجد الكبير في نابلس يدخل مرحلته النهائية بتقنيات
+            حديثة</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="container mx-auto px-6 py-6">
+      <div class="grid lg:grid-cols-4 gap-6">
+        <!-- Main News Column -->
+        <div class="lg:col-span-3 space-y-6">
+          <!-- Featured Breaking News -->
+          <section class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="relative">
+              <!-- Main Story Image Placeholder -->
+              <div
+                class="h-80 bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-white relative overflow-hidden"
+              >
+                <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+                <div class="text-center z-10">
+                  <div class="text-6xl mb-4">🏛️</div>
+                  <h2 class="text-2xl font-bold mb-2">
+                    اكتشاف أثري استثنائي في نابلس
+                  </h2>
+                  <p class="text-lg opacity-90">
+                    فريق من علماء الآثار يكشف عن حمام روماني وفسيفساء نادرة
+                  </p>
+                </div>
+                <div
+                  class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-lg pulse-live"
+                >
+                  🔴 مباشر
+                </div>
+              </div>
+
+              <!-- Story Content -->
+              <div class="p-6">
+                <div class="flex items-center mb-4 text-sm text-gray-600">
+                  <span
+                    class="bg-red-100 text-red-800 px-2 py-1 rounded font-bold ml-3"
+                    >عاجل</span
+                  >
+                  <span class="ml-3">📍 نابلس، فلسطين</span>
+                  <span class="ml-3">⏰ منذ 30 دقيقة</span>
+                  <span class="ml-3">👁️ 45,230 مشاهدة</span>
+                </div>
+
+                <h1 class="text-2xl font-bold text-gray-900 mb-4">
+                  اكتشاف حمام روماني وفسيفساء أثرية نادرة في البلدة القديمة
+                  بنابلس تعيد كتابة تاريخ المدينة
+                </h1>
+
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  كشف فريق من علماء الآثار الفلسطينيين والدوليين عن اكتشاف أثري
+                  استثنائي في قلب البلدة القديمة بنابلس، حيث تم العثور على بقايا
+                  حمام روماني متكامل مع فسيفساء ملونة نادرة تعود للقرن الثاني
+                  الميلادي، مما يؤكد الأهمية التاريخية العريقة لمدينة نابلس
+                  كمركز حضاري مهم في المنطقة.
+                </p>
+
+                <!-- AI Analysis Box -->
+                <div
+                  class="bg-gradient-to-r from-news-primary to-news-accent rounded-lg p-4 text-white mb-4 ai-glow"
+                >
+                  <div class="flex items-center mb-2">
+                    <span class="text-xl ml-2">🤖</span>
+                    <h3 class="font-bold">تحليل الذكاء الاصطناعي</h3>
+                  </div>
+                  <p class="text-sm opacity-90">
+                    يشير التحليل الذكي إلى أن هذا الاكتشاف يعزز من مكانة نابلس
+                    التاريخية ويؤكد استمرارية الحضارة في المنطقة. التقنيات
+                    المستخدمة في الفسيفساء تشير إلى تأثيرات بيزنطية ورومانية
+                    متقدمة.
+                  </p>
+                </div>
+
+                <!-- Social Engagement -->
+                <div class="flex items-center justify-between pt-4 border-t">
+                  <div class="flex space-x-4 space-x-reverse">
+                    <button
+                      class="flex items-center text-gray-600 hover:text-news-accent transition-colors"
+                    >
+                      <span class="ml-1">👍</span> 1,247
+                    </button>
+                    <button
+                      class="flex items-center text-gray-600 hover:text-news-accent transition-colors"
+                    >
+                      <span class="ml-1">💬</span> 89
+                    </button>
+                    <button
+                      class="flex items-center text-gray-600 hover:text-news-accent transition-colors"
+                    >
+                      <span class="ml-1">📤</span> مشاركة
+                    </button>
+                  </div>
+                  <button
+                    class="bg-news-primary text-white px-4 py-2 rounded-lg hover:bg-news-secondary transition-colors"
+                  >
+                    قراءة المزيد
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Secondary News Grid -->
+          <section class="grid md:grid-cols-2 gap-6">
+            <!-- News Card 1 -->
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden card-hover"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center text-white"
+              >
+                <div class="text-center">
+                  <div class="text-4xl mb-2">🎭</div>
+                  <h3 class="text-lg font-bold">مهرجان التراث النابلسي</h3>
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-2 text-xs text-gray-600">
+                  <span
+                    class="bg-green-100 text-green-800 px-2 py-1 rounded ml-2"
+                    >ثقافة</span
+                  >
+                  <span>منذ ساعتين</span>
+                </div>
+                <h3 class="font-bold text-gray-900 mb-2">
+                  مهرجان نابلس للتراث الشعبي يحتفي بالهوية الفلسطينية
+                </h3>
+                <p class="text-gray-600 text-sm mb-3">
+                  انطلق المهرجان السنوي بمشاركة فرق تراثية من جميع أنحاء
+                  فلسطين...
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-500">👁️ 18,750</span>
+                  <button
+                    class="text-news-accent hover:text-news-primary text-sm"
+                  >
+                    اقرأ المزيد
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- News Card 2 -->
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden card-hover"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white"
+              >
+                <div class="text-center">
+                  <div class="text-4xl mb-2">🕌</div>
+                  <h3 class="text-lg font-bold">ترميم المسجد الكبير</h3>
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-2 text-xs text-gray-600">
+                  <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded ml-2"
+                    >تراث</span
+                  >
+                  <span>منذ 4 ساعات</span>
+                </div>
+                <h3 class="font-bold text-gray-900 mb-2">
+                  أعمال ترميم المسجد الكبير تدخل مرحلتها النهائية
+                </h3>
+                <p class="text-gray-600 text-sm mb-3">
+                  مشروع ترميم شامل يحافظ على الطابع المعماري الأصيل للمسجد...
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-gray-500">👁️ 22,300</span>
+                  <button
+                    class="text-news-accent hover:text-news-primary text-sm"
+                  >
+                    اقرأ المزيد
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Specialized Analysis Dashboard -->
+          <section class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-2xl font-bold text-gray-900 flex items-center">
+                <span class="ml-3 text-3xl">🔍</span>
+                مركز التحليلات المتخصصة
+              </h2>
+              <div class="flex items-center space-x-2 space-x-reverse">
+                <div
+                  class="flex items-center space-x-2 space-x-reverse ai-glow bg-red-600 text-white px-3 py-1 rounded-lg ml-2"
+                >
+                  <div
+                    class="w-2 h-2 bg-yellow-400 rounded-full pulse-live"
+                  ></div>
+                  <span class="text-sm">تحليل مستمر</span>
+                </div>
+                <div
+                  class="flex items-center space-x-2 space-x-reverse bg-green-600 text-white px-3 py-1 rounded-lg"
+                >
+                  <span class="text-sm">🛡️ موثق</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Analysis Categories Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6 border-b">
+              <button
+                onclick="showAnalysisTab('political')"
+                id="tab-political"
+                class="analysis-tab active px-4 py-2 rounded-t-lg bg-red-100 text-red-800 border-b-2 border-red-500 font-bold"
+              >
+                🏛️ سياسي
+              </button>
+              <button
+                onclick="showAnalysisTab('social')"
+                id="tab-social"
+                class="analysis-tab px-4 py-2 rounded-t-lg hover:bg-blue-100 text-blue-800"
+              >
+                👥 اجتماعي
+              </button>
+              <button
+                onclick="showAnalysisTab('cultural')"
+                id="tab-cultural"
+                class="analysis-tab px-4 py-2 rounded-t-lg hover:bg-purple-100 text-purple-800"
+              >
+                🎭 ثقافي
+              </button>
+              <button
+                onclick="showAnalysisTab('economic')"
+                id="tab-economic"
+                class="analysis-tab px-4 py-2 rounded-t-lg hover:bg-green-100 text-green-800"
+              >
+                💼 اقتصادي
+              </button>
+              <button
+                onclick="showAnalysisTab('occupation')"
+                id="tab-occupation"
+                class="analysis-tab px-4 py-2 rounded-t-lg hover:bg-orange-100 text-orange-800"
+              >
+                ⚠️ معيقات الاحتلال
+              </button>
+            </div>
+
+            <!-- Political Analysis Tab -->
+            <div id="analysis-political" class="analysis-content">
+              <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div
+                  class="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-lg p-4"
+                >
+                  <div class="text-xl font-bold">73</div>
+                  <div class="text-sm opacity-90">قرار سياسي هذا الشهر</div>
+                  <div class="text-xs mt-1">📈 تأثير مباشر على نابلس</div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg p-4"
+                >
+                  <div class="text-xl font-bold">156</div>
+                  <div class="text-sm opacity-90">انتهاك موثق</div>
+                  <div class="text-xs mt-1">⚠️ في الضفة الغربية</div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-lg p-4"
+                >
+                  <div class="text-xl font-bold">89%</div>
+                  <div class="text-sm opacity-90">رفض شعبي</div>
+                  <div class="text-xs mt-1">📊 للسياسات الاحتلالية</div>
+                </div>
+              </div>
+
+              <div class="bg-red-50 rounded-lg p-4 border-r-4 border-red-500">
+                <h3 class="font-bold text-red-800 mb-3 flex items-center">
+                  <span class="ml-2">🚨</span>
+                  تحليل سياسي عاجل
+                </h3>
+                <p class="text-red-700 text-sm mb-3">
+                  تشير التحليلات إلى تصاعد السياسات الاستيطانية في محيط نابلس،
+                  مع رصد 12 مخططاً استيطانياً جديداً يهدد الأراضي الزراعية
+                  والمواقع الأثرية. الذكاء الاصطناعي يحلل تأثير هذه السياسات على
+                  الاقتصاد المحلي والتراث الثقافي.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-red-600"
+                    >آخر تحديث: منذ 15 دقيقة</span
+                  >
+                  <button
+                    class="bg-red-600 text-white px-3 py-1 rounded text-xs hover:bg-red-700"
+                  >
+                    التقرير كاملاً
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Analysis Tab -->
+            <div id="analysis-social" class="analysis-content hidden">
+              <div class="grid md:grid-cols-4 gap-4 mb-6">
+                <div
+                  class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg p-4 text-center"
+                >
+                  <div class="text-xl font-bold">67%</div>
+                  <div class="text-sm opacity-90">شباب تحت 30</div>
+                  <div class="text-xs mt-1">👥 في نابلس</div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-lg p-4 text-center"
+                >
+                  <div class="text-xl font-bold">34%</div>
+                  <div class="text-sm opacity-90">معدل البطالة</div>
+                  <div class="text-xs mt-1">📉 بين الخريجين</div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-lg p-4 text-center"
+                >
+                  <div class="text-xl font-bold">89</div>
+                  <div class="text-sm opacity-90">مبادرة مجتمعية</div>
+                  <div class="text-xs mt-1">🤝 نشطة حالياً</div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-lg p-4 text-center"
+                >
+                  <div class="text-xl font-bold">156</div>
+                  <div class="text-sm opacity-90">أسرة محتاجة</div>
+                  <div class="text-xs mt-1">🏠 تحتاج دعم</div>
+                </div>
+              </div>
+
+              <div class="bg-blue-50 rounded-lg p-4">
+                <h3 class="font-bold text-blue-800 mb-3">
+                  📊 مؤشرات اجتماعية حية
+                </h3>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm">التماسك المجتمعي</span>
+                    <div class="flex items-center">
+                      <div class="w-24 bg-gray-200 rounded-full h-2 ml-2">
+                        <div
+                          class="bg-green-500 h-2 rounded-full"
+                          style="width: 78%"
+                        ></div>
+                      </div>
+                      <span class="text-xs">78%</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm">المشاركة في الأنشطة التراثية</span>
+                    <div class="flex items-center">
+                      <div class="w-24 bg-gray-200 rounded-full h-2 ml-2">
+                        <div
+                          class="bg-blue-500 h-2 rounded-full"
+                          style="width: 65%"
+                        ></div>
+                      </div>
+                      <span class="text-xs">65%</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm">الثقة في المؤسسات المحلية</span>
+                    <div class="flex items-center">
+                      <div class="w-24 bg-gray-200 rounded-full h-2 ml-2">
+                        <div
+                          class="bg-purple-500 h-2 rounded-full"
+                          style="width: 72%"
+                        ></div>
+                      </div>
+                      <span class="text-xs">72%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cultural Analysis Tab -->
+            <div id="analysis-cultural" class="analysis-content hidden">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-purple-50 rounded-lg p-4">
+                  <h3 class="font-bold text-purple-800 mb-3 flex items-center">
+                    <span class="ml-2">🎭</span>
+                    حالة التراث الثقافي
+                  </h3>
+                  <div class="space-y-3">
+                    <div
+                      class="flex justify-between items-center p-2 bg-white rounded"
+                    >
+                      <span class="text-sm">الحرف التقليدية النشطة</span>
+                      <span
+                        class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
+                        >23 حرفة</span
+                      >
+                    </div>
+                    <div
+                      class="flex justify-between items-center p-2 bg-white rounded"
+                    >
+                      <span class="text-sm">المواقع الأثرية المحمية</span>
+                      <span
+                        class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs"
+                        >67 موقع</span
+                      >
+                    </div>
+                    <div
+                      class="flex justify-between items-center p-2 bg-white rounded"
+                    >
+                      <span class="text-sm">الفعاليات الثقافية الشهرية</span>
+                      <span
+                        class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
+                        >34 فعالية</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-orange-50 rounded-lg p-4">
+                  <h3 class="font-bold text-orange-800 mb-3 flex items-center">
+                    <span class="ml-2">⚠️</span>
+                    تحديات ثقافية
+                  </h3>
+                  <div class="space-y-2">
+                    <div class="bg-white p-2 rounded border-r-4 border-red-400">
+                      <p class="text-sm font-medium">
+                        تراجع إتقان الحرف التقليدية
+                      </p>
+                      <p class="text-xs text-gray-600">
+                        نقص 40% في الحرفيين المهرة
+                      </p>
+                    </div>
+                    <div
+                      class="bg-white p-2 rounded border-r-4 border-yellow-400"
+                    >
+                      <p class="text-sm font-medium">
+                        تأثير التكنولوجيا على التراث
+                      </p>
+                      <p class="text-xs text-gray-600">
+                        حاجة لتوثيق رقمي متقدم
+                      </p>
+                    </div>
+                    <div
+                      class="bg-white p-2 rounded border-r-4 border-orange-400"
+                    >
+                      <p class="text-sm font-medium">
+                        ضغوط الاحتلال على المواقع
+                      </p>
+                      <p class="text-xs text-gray-600">12 موقع تراثي مهدد</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Economic Analysis Tab -->
+            <div id="analysis-economic" class="analysis-content hidden">
+              <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div
+                  class="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-lg p-4"
+                >
+                  <div class="text-xl font-bold">2.3M ₪</div>
+                  <div class="text-sm opacity-90">إيرادات السياحة الشهرية</div>
+                  <div class="text-xs mt-1">📈 +15% عن الشهر الماضي</div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg p-4"
+                >
+                  <div class="text-xl font-bold">1,247</div>
+                  <div class="text-sm opacity-90">فرصة عمل جديدة</div>
+                  <div class="text-xs mt-1">💼 في القطاع الرقمي</div>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-lg p-4"
+                >
+                  <div class="text-xl font-bold">67%</div>
+                  <div class="text-sm opacity-90">نمو التجارة الإلكترونية</div>
+                  <div class="text-xs mt-1">🛒 للمنتجات التراثية</div>
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-green-50 rounded-lg p-4">
+                  <h3 class="font-bold text-green-800 mb-3 flex items-center">
+                    <span class="ml-2">💻</span>
+                    الاقتصاد الرقمي
+                  </h3>
+                  <div class="space-y-2">
+                    <div class="bg-white p-3 rounded shadow-sm">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium"
+                          >منصات التجارة الإلكترونية</span
+                        >
+                        <span class="text-green-600 text-sm">+23%</span>
+                      </div>
+                      <p class="text-xs text-gray-600">
+                        156 متجر إلكتروني للمنتجات النابلسية
+                      </p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium">العمل عن بُعد</span>
+                        <span class="text-blue-600 text-sm">+45%</span>
+                      </div>
+                      <p class="text-xs text-gray-600">
+                        890 وظيفة تقنية متاحة للشباب
+                      </p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium"
+                          >التطبيقات المحلية</span
+                        >
+                        <span class="text-purple-600 text-sm">+67%</span>
+                      </div>
+                      <p class="text-xs text-gray-600">
+                        34 تطبيق يخدم المجتمع المحلي
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h3 class="font-bold text-blue-800 mb-3 flex items-center">
+                    <span class="ml-2">👷</span>
+                    العمل والعمال
+                  </h3>
+                  <div class="space-y-2">
+                    <div class="bg-white p-3 rounded shadow-sm">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium"
+                          >عمال الحرف التقليدية</span
+                        >
+                        <span class="text-orange-600 text-sm">-12%</span>
+                      </div>
+                      <p class="text-xs text-gray-600">
+                        حاجة لبرامج تدريب وتأهيل
+                      </p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium">القطاع السياحي</span>
+                        <span class="text-green-600 text-sm">+18%</span>
+                      </div>
+                      <p class="text-xs text-gray-600">
+                        456 وظيفة جديدة في الضيافة
+                      </p>
+                    </div>
+                    <div class="bg-white p-3 rounded shadow-sm">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium"
+                          >المشاريع الصغيرة</span
+                        >
+                        <span class="text-blue-600 text-sm">+34%</span>
+                      </div>
+                      <p class="text-xs text-gray-600">
+                        234 مشروع ناشئ بدعم محلي
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Occupation Obstacles Tab -->
+            <div id="analysis-occupation" class="analysis-content hidden">
+              <div
+                class="bg-red-50 border-2 border-red-200 rounded-lg p-4 mb-6"
+              >
+                <div class="flex items-center mb-3">
+                  <span class="text-2xl ml-3">⚠️</span>
+                  <h3 class="font-bold text-red-800 text-lg">
+                    معيقات الاحتلال اليومية
+                  </h3>
+                  <div
+                    class="mr-auto bg-red-600 text-white px-2 py-1 rounded text-xs pulse-live"
+                  >
+                    تحديث مستمر
+                  </div>
+                </div>
+                <p class="text-red-700 text-sm mb-4">
+                  رصد وتحليل مستمر لتأثير السياسات الاحتلالية على الحياة اليومية
+                  للمواطنين في نابلس والمناطق المحيطة
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <!-- Daily Life Impact -->
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                  <h3 class="font-bold text-gray-900 mb-3 flex items-center">
+                    <span class="ml-2">🏠</span>
+                    تأثير على الحياة اليومية
+                  </h3>
+                  <div class="space-y-3">
+                    <div
+                      class="border-r-4 border-red-500 pr-3 bg-red-50 p-2 rounded"
+                    >
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium text-red-800"
+                          >نقاط التفتيش النشطة</span
+                        >
+                        <span
+                          class="bg-red-600 text-white px-2 py-1 rounded text-xs"
+                          >23 نقطة</span
+                        >
+                      </div>
+                      <p class="text-xs text-red-600">
+                        متوسط الانتظار: 45 دقيقة
+                      </p>
+                    </div>
+
+                    <div
+                      class="border-r-4 border-orange-500 pr-3 bg-orange-50 p-2 rounded"
+                    >
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium text-orange-800"
+                          >إغلاق الطرق</span
+                        >
+                        <span
+                          class="bg-orange-600 text-white px-2 py-1 rounded text-xs"
+                          >12 طريق</span
+                        >
+                      </div>
+                      <p class="text-xs text-orange-600">
+                        تأثير على 15,000 مواطن يومياً
+                      </p>
+                    </div>
+
+                    <div
+                      class="border-r-4 border-yellow-500 pr-3 bg-yellow-50 p-2 rounded"
+                    >
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium text-yellow-800"
+                          >قيود الحركة</span
+                        >
+                        <span
+                          class="bg-yellow-600 text-white px-2 py-1 rounded text-xs"
+                          >يومية</span
+                        >
+                      </div>
+                      <p class="text-xs text-yellow-600">
+                        تأخير في الوصول للعمل والمدارس
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Economic Impact -->
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                  <h3 class="font-bold text-gray-900 mb-3 flex items-center">
+                    <span class="ml-2">💰</span>
+                    التأثير الاقتصادي
+                  </h3>
+                  <div class="space-y-3">
+                    <div
+                      class="border-r-4 border-red-500 pr-3 bg-red-50 p-2 rounded"
+                    >
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium text-red-800"
+                          >خسائر يومية</span
+                        >
+                        <span
+                          class="bg-red-600 text-white px-2 py-1 rounded text-xs"
+                          >₪ 340K</span
+                        >
+                      </div>
+                      <p class="text-xs text-red-600">
+                        بسبب إغلاق الطرق التجارية
+                      </p>
+                    </div>
+
+                    <div
+                      class="border-r-4 border-blue-500 pr-3 bg-blue-50 p-2 rounded"
+                    >
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium text-blue-800"
+                          >تأثير على السياحة</span
+                        >
+                        <span
+                          class="bg-blue-600 text-white px-2 py-1 rounded text-xs"
+                          >-67%</span
+                        >
+                      </div>
+                      <p class="text-xs text-blue-600">
+                        انخفاض في أعداد الزوار
+                      </p>
+                    </div>
+
+                    <div
+                      class="border-r-4 border-purple-500 pr-3 bg-purple-50 p-2 rounded"
+                    >
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm font-medium text-purple-800"
+                          >المشاريع المتوقفة</span
+                        >
+                        <span
+                          class="bg-purple-600 text-white px-2 py-1 rounded text-xs"
+                          >34 مشروع</span
+                        >
+                      </div>
+                      <p class="text-xs text-purple-600">بسبب القيود الأمنية</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Real-time Monitoring -->
+              <div class="bg-gray-900 text-white rounded-lg p-4">
+                <h3 class="font-bold mb-3 flex items-center">
+                  <span class="ml-2">📡</span>
+                  مراقبة حية للأوضاع الميدانية
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div
+                    class="bg-red-600 bg-opacity-20 border border-red-500 rounded p-3"
+                  >
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-sm">حالة الطوارئ</span>
+                      <div
+                        class="w-3 h-3 bg-red-500 rounded-full pulse-live"
+                      ></div>
+                    </div>
+                    <div class="text-lg font-bold">نشطة</div>
+                    <div class="text-xs opacity-75">3 مناطق متأثرة</div>
+                  </div>
+
+                  <div
+                    class="bg-yellow-600 bg-opacity-20 border border-yellow-500 rounded p-3"
+                  >
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-sm">تحذيرات أمنية</span>
+                      <div
+                        class="w-3 h-3 bg-yellow-500 rounded-full pulse-live"
+                      ></div>
+                    </div>
+                    <div class="text-lg font-bold">7 تحذيرات</div>
+                    <div class="text-xs opacity-75">آخر تحديث: منذ 5 دقائق</div>
+                  </div>
+
+                  <div
+                    class="bg-blue-600 bg-opacity-20 border border-blue-500 rounded p-3"
+                  >
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-sm">طرق بديلة</span>
+                      <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    </div>
+                    <div class="text-lg font-bold">12 طريق</div>
+                    <div class="text-xs opacity-75">متاحة حالياً</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- VR Studio Section -->
+          <section
+            class="vr-effect rounded-lg p-8 text-white relative overflow-hidden"
+          >
+            <div class="relative z-10">
+              <div class="text-center mb-6">
+                <div class="text-6xl mb-4">🥽</div>
+                <h2 class="text-3xl font-bold mb-2">
+                  استوديو الواقع المعزز والافتراضي
+                </h2>
+                <p class="text-lg opacity-90">
+                  تجربة إعلامية تفاعلية ثلاثية الأبعاد
+                </p>
+              </div>
+
+              <div class="grid md:grid-cols-3 gap-6 mb-6">
+                <div
+                  class="bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm"
+                >
+                  <div class="text-3xl mb-3">📹</div>
+                  <h3 class="font-bold mb-2">تقارير VR</h3>
+                  <p class="text-sm opacity-90">
+                    إنتاج تقارير إخبارية بتقنية الواقع الافتراضي
+                  </p>
+                  <button
+                    onclick="startVRReporting()"
+                    class="mt-3 bg-white text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors w-full"
+                  >
+                    ابدأ التسجيل
+                  </button>
+                </div>
+                <div
+                  class="bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm"
+                >
+                  <div class="text-3xl mb-3">🗺️</div>
+                  <h3 class="font-bold mb-2">جولات AR</h3>
+                  <p class="text-sm opacity-90">
+                    جولات تفاعلية بالواقع المعزز للمواقع التراثية
+                  </p>
+                  <button
+                    onclick="startARTour()"
+                    class="mt-3 bg-white text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors w-full"
+                  >
+                    بدء الجولة
+                  </button>
+                </div>
+                <div
+                  class="bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm"
+                >
+                  <div class="text-3xl mb-3">🎙️</div>
+                  <h3 class="font-bold mb-2">مقابلات تفاعلية</h3>
+                  <p class="text-sm opacity-90">
+                    إجراء مقابلات في بيئات افتراضية متطورة
+                  </p>
+                  <button
+                    onclick="startVRInterview()"
+                    class="mt-3 bg-white text-purple-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors w-full"
+                  >
+                    إعداد المقابلة
+                  </button>
+                </div>
+              </div>
+
+              <!-- VR Controls -->
+              <div
+                class="bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm"
+              >
+                <h3 class="font-bold mb-3 flex items-center">
+                  <span class="ml-2">🎮</span>
+                  لوحة التحكم VR/AR
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm mb-1">جودة العرض</label>
+                    <select
+                      class="w-full bg-white bg-opacity-20 rounded px-3 py-2 text-white"
+                    >
+                      <option>4K Ultra HD</option>
+                      <option>Full HD</option>
+                      <option>HD</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-sm mb-1">نوع التجربة</label>
+                    <select
+                      class="w-full bg-white bg-opacity-20 rounded px-3 py-2 text-white"
+                    >
+                      <option>واقع افتراضي كامل</option>
+                      <option>واقع معزز</option>
+                      <option>واقع مختلط</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Live AI Assistant -->
+          <div class="bg-white rounded-lg shadow-lg p-4 ai-glow">
+            <h3 class="font-bold text-gray-900 mb-3 flex items-center">
+              <span class="ml-2">🤖</span>
+              المساعد الذكي
+            </h3>
+            <div
+              class="bg-gray-50 rounded-lg p-3 h-64 overflow-y-auto mb-3"
+              id="aiChatContainer"
+            >
+              <div class="mb-3 flex">
+                <div
+                  class="bg-news-accent text-white rounded-lg px-3 py-2 max-w-xs text-sm"
+                >
+                  مرحباً! أنا مساعدك الإعلامي الذكي. يمكنني مساعدتك في تحليل
+                  الأخبار وكتابة التقارير عن التراث الفلسطيني والنابلسي.
+                </div>
+              </div>
+            </div>
+            <div class="flex">
+              <input
+                type="text"
+                id="aiChatInput"
+                placeholder="اسأل عن الأخبار..."
+                class="flex-1 border rounded-r-lg px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-news-accent"
+              />
+              <button
+                onclick="sendAIMessage()"
+                class="bg-news-accent text-white px-3 py-1 rounded-l-lg hover:bg-news-primary transition-colors text-sm"
+              >
+                إرسال
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Location Map -->
+          <div class="bg-white rounded-lg shadow-lg p-4">
+            <h3 class="font-bold text-gray-900 mb-3 flex items-center">
+              <span class="ml-2">📍</span>
+              الخريطة الحية
+            </h3>
+            <div
+              class="bg-gradient-to-br from-green-400 to-blue-500 rounded-lg h-48 relative overflow-hidden"
+            >
+              <!-- Live Location Markers -->
+              <div
+                class="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              >
+                <div
+                  class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-lg pulse-live"
+                  onclick="showLiveLocation('المسجد الأقصى', 'بث مباشر من القدس الشريف')"
+                >
+                  🕌
+                </div>
+              </div>
+
+              <div
+                class="absolute top-2/3 left-1/3 transform -translate-x-1/2 -translate-y-1/2"
+              >
+                <div
+                  class="bg-aljazeera-primary text-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-lg pulse-live"
+                  onclick="showLiveLocation('نابلس', 'تغطية مباشرة من موقع الاكتشاف الأثري')"
+                >
+                  🏛️
+                </div>
+              </div>
+
+              <div
+                class="absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2"
+              >
+                <div
+                  class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-lg"
+                  onclick="showLiveLocation('جبل جرزيم', 'مراسل ميداني')"
+                >
+                  ⛰️
+                </div>
+              </div>
+
+              <!-- GPS Controls -->
+              <div class="absolute top-2 right-2 bg-white rounded p-1 shadow">
+                <button
+                  class="block w-6 h-6 bg-gray-200 rounded mb-1 hover:bg-gray-300 transition-colors text-xs"
+                >
+                  +
+                </button>
+                <button
+                  class="block w-6 h-6 bg-gray-200 rounded hover:bg-gray-300 transition-colors text-xs"
+                >
+                  -
+                </button>
+              </div>
+
+              <!-- Live Status -->
+              <div
+                class="absolute bottom-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs pulse-live"
+              >
+                🔴 3 مراسلين نشطين
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick News -->
+          <div class="bg-white rounded-lg shadow-lg p-4">
+            <h3 class="font-bold text-gray-900 mb-3 flex items-center">
+              <span class="ml-2">⚡</span>
+              أخبار سريعة
+            </h3>
+            <div class="space-y-3">
+              <div class="border-r-4 border-red-500 pr-3">
+                <p class="text-sm font-medium text-gray-800">
+                  افتتاح معرض الكنافة النابلسية في المدينة القديمة
+                </p>
+                <span class="text-xs text-gray-500">منذ 15 دقيقة</span>
+              </div>
+              <div class="border-r-4 border-blue-500 pr-3">
+                <p class="text-sm font-medium text-gray-800">
+                  جامعة النجاح تطلق مشروع توثيق التراث الرقمي
+                </p>
+                <span class="text-xs text-gray-500">منذ 45 دقيقة</span>
+              </div>
+              <div class="border-r-4 border-green-500 pr-3">
+                <p class="text-sm font-medium text-gray-800">
+                  ورشة تدريبية لحرفيي الصابون النابلسي
+                </p>
+                <span class="text-xs text-gray-500">منذ ساعة</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weather & Prayer Times -->
+          <div class="bg-white rounded-lg shadow-lg p-4">
+            <h3 class="font-bold text-gray-900 mb-3 flex items-center">
+              <span class="ml-2">🌤️</span>
+              نابلس الآن
+            </h3>
+            <div class="text-center mb-4">
+              <div class="text-3xl mb-2">☀️</div>
+              <div class="text-2xl font-bold text-gray-900">22°C</div>
+              <div class="text-sm text-gray-600">صافي جزئياً</div>
+            </div>
+            <div class="border-t pt-3">
+              <h4 class="font-bold text-sm text-gray-900 mb-2">
+                مواقيت الصلاة
+              </h4>
+              <div class="space-y-1 text-sm">
+                <div class="flex justify-between">
+                  <span>الفجر</span>
+                  <span>05:42</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>الظهر</span>
+                  <span>12:15</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>العصر</span>
+                  <span>15:30</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>المغرب</span>
+                  <span>17:45</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>العشاء</span>
+                  <span>19:15</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="aljazeera-gradient text-white py-8 mt-12">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-6 mb-6">
+          <div>
+            <h3 class="font-bold text-lg mb-3">الجزيرة الذكية</h3>
+            <p class="text-sm opacity-90">
+              منصة إعلامية متطورة تجمع بين الصحافة التقليدية وتقنيات الذكاء
+              الاصطناعي والواقع المعزز
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3">الأقسام</h4>
+            <ul class="space-y-1 text-sm">
+              <li>
+                <a href="#" class="hover:text-aljazeera-light">أخبار فلسطين</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-aljazeera-light">تراث نابلس</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-aljazeera-light">تحليلات ذكية</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-aljazeera-light">استوديو VR</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3">التقنيات</h4>
+            <ul class="space-y-1 text-sm">
+              <li>
+                <a href="#" class="hover:text-aljazeera-light"
+                  >الذكاء الاصطناعي</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-aljazeera-light">الواقع المعزز</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-aljazeera-light">تحديد المواقع</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-aljazeera-light">التحليل الذكي</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3">تواصل معنا</h4>
+            <div class="space-y-2 text-sm">
+              <div>📧 info@aljazeera-ai.com</div>
+              <div>📱 +970-9-123-4567</div>
+              <div>📍 نابلس، فلسطين</div>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-white border-opacity-20 pt-4 text-center">
+          <p class="text-sm opacity-75">
+            © 2024 الجزيرة الذكية. جميع الحقوق محفوظة. مدعوم بتقنيات الذكاء
+            الاصطناعي المتقدمة
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Analysis Tabs Functionality
+      function showAnalysisTab(tabName) {
+        // Hide all content
+        const contents = document.querySelectorAll(".analysis-content");
+        contents.forEach((content) => content.classList.add("hidden"));
+
+        // Remove active class from all tabs
+        const tabs = document.querySelectorAll(".analysis-tab");
+        tabs.forEach((tab) => {
+          tab.classList.remove(
+            "active",
+            "bg-red-100",
+            "text-red-800",
+            "border-b-2",
+            "border-red-500",
+            "font-bold"
+          );
+          tab.classList.remove(
+            "bg-blue-100",
+            "text-blue-800",
+            "border-blue-500"
+          );
+          tab.classList.remove(
+            "bg-purple-100",
+            "text-purple-800",
+            "border-purple-500"
+          );
+          tab.classList.remove(
+            "bg-green-100",
+            "text-green-800",
+            "border-green-500"
+          );
+          tab.classList.remove(
+            "bg-orange-100",
+            "text-orange-800",
+            "border-orange-500"
+          );
+        });
+
+        // Show selected content
+        const selectedContent = document.getElementById(`analysis-${tabName}`);
+        if (selectedContent) {
+          selectedContent.classList.remove("hidden");
+        }
+
+        // Add active class to selected tab
+        const selectedTab = document.getElementById(`tab-${tabName}`);
+        if (selectedTab) {
+          selectedTab.classList.add("active", "border-b-2", "font-bold");
+
+          // Add specific colors based on tab type
+          switch (tabName) {
+            case "political":
+              selectedTab.classList.add(
+                "bg-red-100",
+                "text-red-800",
+                "border-red-500"
+              );
+              break;
+            case "social":
+              selectedTab.classList.add(
+                "bg-blue-100",
+                "text-blue-800",
+                "border-blue-500"
+              );
+              break;
+            case "cultural":
+              selectedTab.classList.add(
+                "bg-purple-100",
+                "text-purple-800",
+                "border-purple-500"
+              );
+              break;
+            case "economic":
+              selectedTab.classList.add(
+                "bg-green-100",
+                "text-green-800",
+                "border-green-500"
+              );
+              break;
+            case "occupation":
+              selectedTab.classList.add(
+                "bg-orange-100",
+                "text-orange-800",
+                "border-orange-500"
+              );
+              break;
+          }
+        }
+      }
+
+      // AI Chat Functionality
+      function sendAIMessage() {
+        const input = document.getElementById("aiChatInput");
+        const container = document.getElementById("aiChatContainer");
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        // Add user message
+        const userMsg = document.createElement("div");
+        userMsg.className = "mb-3 flex justify-end";
+        userMsg.innerHTML = `<div class="bg-gray-600 text-white rounded-lg px-3 py-2 max-w-xs text-sm">${message}</div>`;
+        container.appendChild(userMsg);
+
+        input.value = "";
+
+        // Simulate AI response with specialized analysis
+        setTimeout(() => {
+          const aiResponses = [
+            "تحليل الذكاء الاصطناعي يشير إلى أن الاكتشاف الأثري في نابلس يعكس عمق التاريخ الفلسطيني. الفسيفساء المكتشفة تحمل رموزاً ثقافية مهمة تربط الماضي بالحاضر.",
+            "بناءً على تحليل البيانات، مهرجان التراث النابلسي يساهم في تعزيز الهوية الثقافية الفلسطينية. الحرف التقليدية مثل الصابون والكنافة تمثل مقاومة ثقافية.",
+            "الخوارزميات تظهر أن نابلس تحتل مكانة مركزية في الخريطة الثقافية الفلسطينية. البلدة القديمة تحتوي على 40% من المواقع التراثية المهمة في المنطقة.",
+            "التحليل الذكي للمحتوى يؤكد أن التراث النابلسي يواجه تحديات الحفظ والتوثيق. نحتاج لمبادرات رقمية متطورة لحماية هذا الإرث الثقافي.",
+            "تحليل الوضع الاقتصادي يظهر نمواً في القطاع الرقمي بنسبة 67%. الشباب الفلسطيني يتجه نحو ريادة الأعمال التقنية كبديل للوظائف التقليدية.",
+            "رصد معيقات الاحتلال يشير إلى تأثير مباشر على 15,000 مواطن يومياً. نقاط التفتيش تسبب خسائر اقتصادية تقدر بـ 340 ألف شيكل يومياً.",
+            "المؤشرات الاجتماعية تظهر تماسكاً مجتمعياً بنسبة 78%. المبادرات التراثية تلعب دوراً مهماً في الحفاظ على الهوية الثقافية رغم التحديات.",
+          ];
+
+          const botMsg = document.createElement("div");
+          botMsg.className = "mb-3 flex";
+          const randomResponse =
+            aiResponses[Math.floor(Math.random() * aiResponses.length)];
+          botMsg.innerHTML = `<div class="bg-aljazeera-primary text-white rounded-lg px-3 py-2 max-w-xs text-sm">${randomResponse}</div>`;
+          container.appendChild(botMsg);
+
+          container.scrollTop = container.scrollHeight;
+        }, 1000);
+
+        container.scrollTop = container.scrollHeight;
+      }
+
+      // VR Studio Functions
+      function startVRReporting() {
+        alert(
+          "🎬 بدء تسجيل تقرير VR!\n\nالميزات المتاحة:\n• تسجيل بدقة 4K\n• صوت محيطي ثلاثي الأبعاد\n• تأثيرات بصرية متقدمة\n• تحرير تلقائي بالذكاء الاصطناعي\n\nجاري تحضير الاستوديو الافتراضي..."
+        );
+      }
+
+      function startARTour() {
+        alert(
+          "🗺️ بدء جولة الواقع المعزز!\n\nالمواقع المتاحة:\n• البلدة القديمة في نابلس\n• المسجد الكبير\n• أسواق نابلس التراثية\n• مصانع الصابون التقليدية\n\nيرجى توجيه الكاميرا نحو الموقع المطلوب..."
+        );
+      }
+
+      function startVRInterview() {
+        alert(
+          "🎙️ إعداد مقابلة VR!\n\nالبيئات المتاحة:\n• استوديو إخباري كلاسيكي\n• موقع أثري في نابلس\n• مكتبة تراثية\n• ساحة المدينة القديمة\n\nجاري تحميل البيئة الافتراضية..."
+        );
+      }
+
+      // Live Location Functions
+      function showLiveLocation(location, description) {
+        alert(
+          `📍 موقع مباشر: ${location}\n\n${description}\n\nالمراسلون النشطون: 2\nجودة الإشارة: ممتازة\nعدد المشاهدين: 15,420\n\nهل تريد مشاهدة البث المباشر؟`
+        );
+      }
+
+      // Enter key support
+      document
+        .getElementById("aiChatInput")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            sendAIMessage();
+          }
+        });
+
+      // Mobile menu toggle
+      document.getElementById("menuBtn").addEventListener("click", function () {
+        alert("القائمة المحمولة - سيتم تطويرها قريباً");
+      });
+
+      // Auto-update news ticker
+      function updateTicker() {
+        // Simulate real-time news updates
+        console.log("تحديث شريط الأخبار...");
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        // Start auto-updates
+        setInterval(updateTicker, 30000); // Update every 30 seconds
+
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        });
+
+        document.querySelectorAll(".card-hover").forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+          card.style.transition = "all 0.6s ease";
+          observer.observe(card);
+        });
+      });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'978c4f44d007997d',t:'MTc1NjgwODc5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
