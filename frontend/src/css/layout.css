@@ -1,0 +1,52 @@
+/* المسافات: هيدر ثابت + سايدبار يمين */
+.header-height {
+  height: 64px;
+}
+.sidebar-width {
+  width: 280px;
+}
+
+.app-shell {
+}
+.page-wrapper {
+  padding: 88px 24px 32px 24px; /* أسفل الهيدر */
+  margin-right: 300px; /* يفسح مكان للسايدبار */
+  min-height: 100vh;
+}
+body.sidebar-collapsed .page-wrapper {
+  margin-right: 84px;
+}
+
+/* بطاقات مختصرة في الصفحة الرئيسية */
+.cards-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.mini-card {
+  padding: 18px;
+  border-radius: 14px;
+  color: white;
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+}
+.mini-card.g1 {
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+}
+.mini-card.g2 {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+.mini-card.g3 {
+  background: linear-gradient(135deg, #f59e0b, #b45309);
+}
+.hero {
+  padding: 40px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #312e81, #6d28d9 60%, #eab308);
+}
+.hero.alt {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+}
+.hero.alt2 {
+  background: linear-gradient(135deg, #1d4ed8, #9333ea);
+}

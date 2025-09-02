@@ -1,0 +1,86 @@
+/* styles.css */
+
+/* خلفية عامة للموقع */
+body {
+  margin: 0;
+  font-family: "Cairo", sans-serif;
+  background: linear-gradient(135deg, #0a1a2f, #1e3a8a, #e50914);
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+/* الحاوية الرئيسية */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* الشعار */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+}
+
+.header-logo img {
+  width: 60px;
+  height: auto;
+}
+
+.header-logo h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e50914; /* الأحمر الأساسي */
+}
+
+.header-logo span {
+  font-size: 0.9rem;
+  color: #d1d5db; /* رمادي فاتح */
+}
+
+/* الروابط */
+a {
+  color: #e50914;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+/* بطاقات المحتوى */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* أزرار */
+button {
+  background: linear-gradient(90deg, #1e3a8a, #e50914);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #e50914, #1e3a8a);
+  transform: scale(1.05);
+}

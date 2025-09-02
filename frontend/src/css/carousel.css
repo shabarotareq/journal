@@ -1,0 +1,60 @@
+.carousel2 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.carousel2 .track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel2 .slide {
+  min-width: 100%;
+  padding: 28px;
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  color: #fff;
+}
+.carousel2 .slide .slide-text {
+  font-size: 1.2rem;
+}
+.carousel2 .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.25);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+}
+.carousel2 .prev {
+  right: 8px;
+}
+.carousel2 .next {
+  left: 8px;
+}
+.carousel2 .dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+.carousel2 .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+.carousel2 .dot.active {
+  background: #fff;
+}
